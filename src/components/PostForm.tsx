@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { addPost } from "../redux";
+import { addPost } from "../redux/resources/posts";
 import { useAppDispatch } from "../redux/hooks";
 
 const StyledInput = styled.input`
@@ -37,7 +37,7 @@ const SubmitButton = styled.button`
 
 export default function PostForm({ makePost }) {
   const [body, setBody] = React.useState<string>("");
-  const [title, setTitle] = React.useState<string >("");
+  const [title, setTitle] = React.useState<string>("");
 
   const dispatch = useAppDispatch();
 
@@ -57,8 +57,8 @@ export default function PostForm({ makePost }) {
       userId: 1356,
     };
     const { data: newPost } = await makePost(params);
-    dispatch(addPost(newPost))
-    console.log(newPost)
+    dispatch(addPost(newPost));
+    console.log(newPost);
     setTitle("");
     setBody("");
   };

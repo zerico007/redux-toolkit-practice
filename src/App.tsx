@@ -2,7 +2,7 @@ import React from "react";
 import Posts from "./components/Posts";
 import PostForm from "./components/PostForm";
 import axios from "axios";
-import { insertPosts } from "./redux";
+import { insertPosts } from "./redux/resources/posts";
 import { useAppDispatch } from "./redux/hooks";
 import { useAddPostMutation, useGetPostsQuery } from "./redux/service";
 
