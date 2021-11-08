@@ -19,7 +19,15 @@ export const api = createApi({
         body,
       }),
     }),
+    updatePost: build.mutation<Post, Partial<Post>>({
+      query: (body) => ({
+        url: `posts/${body.id}`,
+        method: "PUT",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetPostsQuery, useAddPostMutation } = api;
+export const { useGetPostsQuery, useAddPostMutation, useUpdatePostMutation } =
+  api;

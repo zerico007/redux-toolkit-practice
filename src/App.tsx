@@ -4,7 +4,11 @@ import PostForm from "./components/PostForm";
 import axios from "axios";
 import { insertPosts } from "./redux/resources/posts";
 import { useAppDispatch } from "./redux/hooks";
-import { useAddPostMutation, useGetPostsQuery } from "./redux/service";
+import {
+  useAddPostMutation,
+  useGetPostsQuery,
+  useUpdatePostMutation,
+} from "./redux/service";
 
 axios.defaults.baseURL = "https://jsonplaceholder.typicode.com/posts";
 
@@ -14,6 +18,7 @@ function App() {
   const { data: postsList, error } = useGetPostsQuery();
 
   const [addPost] = useAddPostMutation();
+  const [updatePost] = useUpdatePostMutation();
 
   React.useEffect(() => {
     if (postsList && !localStorage.catalogueState) {
@@ -22,7 +27,7 @@ function App() {
   });
   return (
     <div className="App" style={{ width: "90%", margin: "auto" }}>
-      <PostForm makePost={addPost} />
+      <PostForm makePost={addPost} editPost={updatePost} />
       <hr />
       <Posts />
       {error && <div>Error in fetching posts</div>}
